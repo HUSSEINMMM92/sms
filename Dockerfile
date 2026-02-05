@@ -8,10 +8,6 @@ RUN a2dismod mpm_event mpm_worker \
 # Install MySQL extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Create writable session folder
-RUN mkdir -p /var/lib/php/sessions \
-    && chmod -R 777 /var/lib/php/sessions
-
 # Copy all PHPRad project files to Apache root
 COPY . /var/www/html/
 
