@@ -14,5 +14,3 @@ COPY . /var/www/html/
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Make uploads folder writable (if your PHPRad uses it)
-RUN chmod -R 777 /var/www/html/uploads
