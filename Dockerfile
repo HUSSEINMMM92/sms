@@ -1,16 +1,10 @@
 FROM php:7.4-apache
 
-
-# Disable conflicting MPMs and enable prefork + rewrite
-RUN a2dismod mpm_event mpm_worker \
-    && a2enmod mpm_prefork rewrite
+# Enable rewrite
+RUN a2enmod rewrite
 
 # Install MySQL extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copy all PHPRad project files to Apache root
+# Copy project
 COPY . /var/www/html/
-
-# Set correct permissions
-RUN chown -R www-data:www-data /var/www/html
-
